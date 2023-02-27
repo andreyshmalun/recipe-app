@@ -1,0 +1,51 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RecipeApp | Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      href="{% static 'recipes/images/favicon.png' %}"
+    />
+    <style type="text/css">
+      body {
+        background: url("{% static 'recipes/images/background.jpeg' %}")
+          no-repeat fixed;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .wrapper {
+        display: flex;
+        background-color: white;
+        width: 70vw;
+        padding: 20px;
+        border-radius: 20px;
+      }
+      .details {
+        padding-left: 20px;
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+
+  <div class="wrapper">
+    <div>
+      <h2>{{object.name}}</h2>
+      <img src="{{object.pic.url}}" width="200" />
+    </div>
+    <div class="details">
+      <div>
+        <b>Cooking Time (min): </b> {{object.cooking_time}} <br />
+        <b>Difficulty: </b> {{object.calculate_difficulty}} <br /><br />
+      </div>
+      <div>
+        <b>Ingredients: </b> {{object.ingredients}} <br />
+        <b>Description: </b> {{object.description}} <br />
+      </div>
+    </div>
+  </div>
+</html>
