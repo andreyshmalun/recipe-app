@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>RecipeApp | Home</title>
+    <title>RecipeApp | Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load static %}
     <link
@@ -18,7 +18,7 @@
         align-items: center;
         margin-top: 15vh;
       }
-      .blurred-div {
+      .login-form {
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(4px);
@@ -26,6 +26,37 @@
         margin: 20px;
         text-align: center;
       }
+      .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
+      }
+
+      .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .form input[type='text'],
+      .form input[type='password'] {
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
       .btn {
         padding: 10px 20px;
         border: none;
@@ -36,29 +67,24 @@
       .btn-primary {
         background-color: #609966;
         color: #fff;
-        text-decoration: none;
-        width: 30%;
-        display: inline-block;
       }
 
       .btn-primary:hover {
         background-color: #9dc08b;
       }
-      p {
-        margin-bottom: 30px;
-      }
     </style>
   </head>
 
   <body>
-    <div class="blurred-div">
-      <h1>Welcome to Recipe App</h1>
-      <h2>Discover Delicious Recipes</h2>
-      <p>
-        Browse our collection of mouth-watering recipes and find your next
-        favorite dish.
-      </p>
-      <a href="{%url 'login' %}" class="btn btn-primary"> Login </a>
+    <div class="login-form">
+      <h1>Login</h1>
+      {% if error_message %}
+      <div class="alert alert-danger">{{ error_message }}</div>
+      {% endif %}
+      <form class="form" action="" method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
     </div>
   </body>
 </html>

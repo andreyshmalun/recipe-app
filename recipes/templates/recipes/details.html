@@ -11,12 +11,15 @@
     />
     <style type="text/css">
       body {
+        margin: 0;
         background: url("{% static 'recipes/images/background.jpeg' %}")
           no-repeat fixed;
         background-size: cover;
         display: flex;
         flex-direction: column;
         align-items: center;
+        backdrop-filter: blur(5px);
+        height: 100vh;
       }
       .wrapper {
         display: flex;
@@ -29,9 +32,58 @@
         padding-left: 20px;
         padding-top: 20px;
       }
+
+       nav {
+        background-color: #609966;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 16px;
+      }
+      nav ul {
+        list-style-type: none;
+        margin: 0 16px;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      nav li {
+        float: right;
+      }
+
+      nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 18px;
+        text-decoration: none;
+      }
+
+      nav li a:hover {
+        background-color: #9dc08b;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      @media only screen and (max-width: 920px) {
+        .wrapper {
+          flex-direction: column;
+          text-align: center;
+        }
     </style>
   </head>
-
+  <nav>
+    <ul>
+      <img
+        id="logo"
+        src="{% static 'recipes/images/logo.png' %}"
+        width="50px"
+      />
+      <li>
+        <a href="{%url 'logout' %}" class="btn btn-primary"> Logout </a>
+      </li>
+    </ul>
+  </nav>
   <div class="wrapper">
     <div>
       <h2>{{object.name}}</h2>
