@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RecipeApp | Recipes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
+    <link
+      rel="shortcut icon"
+      href="{% static 'recipes/images/favicon.png' %}"
+    />
+    <style type="text/css">
+      body {
+        margin: 0;
+        background: url("{% static 'recipes/images/background.jpeg' %}")
+          no-repeat fixed;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(5px);
+        align-items: center;
+      }
+      .blurred-div {
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+      }
+      nav {
+        background-color: #609966;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 16px;
+      }
+      nav ul {
+        list-style-type: none;
+        margin: 0 16px;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      nav li {
+        float: right;
+      }
+
+      nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 18px;
+        text-decoration: none;
+      }
+
+      nav li a:hover {
+        background-color: #9dc08b;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <nav>
+    <ul>
+      <img
+        id="logo"
+        src="{% static 'recipes/images/logo.png' %}"
+        width="50px"
+      />
+      <li>
+        <a href="{%url 'logout' %}" class="btn btn-primary"> Logout </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="blurred-div">
+    <h1>Search for recipes in database</h1>
+    <hr />
+    <form action="" method="POST" class="form_data">
+      {% csrf_token %} {{form}}
+      <button type="submit">search</button>
+    </form>
+    <br />
+    <br />
+    {% if recipe_df %} {{recipe_df|safe}}
+    <br />
+    <img alt="chart" src="data:image/png;base64, {{chart|safe}}" />
+    {% else %}
+    <h3>no data</h3>
+    {% endif %}
+  </div>
+</html>
