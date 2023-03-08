@@ -18,12 +18,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import login_view, logout_view
+from recipes.views import records, RecipeListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
+    path('search/', records, name='search'),
+    path('list/', RecipeListView.as_view(), name='list'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
