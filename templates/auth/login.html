@@ -8,82 +8,29 @@
       rel="shortcut icon"
       href="{% static 'recipes/images/favicon.png' %}"
     />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'recipes/css/styles.css' %}"
+    />
     <style type="text/css">
       body {
         background: url("{% static 'recipes/images/background.jpeg' %}")
           no-repeat fixed;
         background-size: cover;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 15vh;
-      }
-      .login-form {
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(4px);
-        padding: 20px;
-        margin: 20px;
-        text-align: center;
-      }
-      .alert {
-        padding: 15px;
-        margin-bottom: 20px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-      }
-
-      .alert-danger {
-        color: #721c24;
-        background-color: #f8d7da;
-        border-color: #f5c6cb;
-      }
-
-      .form {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .form label {
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
-
-      .form input[type='text'],
-      .form input[type='password'] {
-        padding: 10px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-      }
-
-      .btn {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-
-      .btn-primary {
-        background-color: #609966;
-        color: #fff;
-      }
-
-      .btn-primary:hover {
-        background-color: #9dc08b;
       }
     </style>
   </head>
 
   <body>
-    <div class="login-form">
+    <div class="blurred-div">
       <h1>Login</h1>
       {% if error_message %}
       <div class="alert alert-danger">{{ error_message }}</div>
       {% endif %}
       <form class="form" action="" method="POST">
         {% csrf_token %} {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Login</button>
+        <button type="submit" class="btn">Login</button>
       </form>
     </div>
   </body>
