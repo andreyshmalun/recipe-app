@@ -31,7 +31,7 @@ if IS_HEROKU:
     DEBUG = True
 
 if IS_HEROKU:
-    ALLOWED_HOSTS = ['recipe-app-python.herokuapp.com']
+    ALLOWED_HOSTS = ['*']
 else:
     ALLOWED_HOSTS = ['*']
 
